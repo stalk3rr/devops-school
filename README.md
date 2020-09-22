@@ -1,3 +1,3 @@
 # devops-school
 educational purposes
-#changed from homepc
+#changed from homepc, configured git user globals
