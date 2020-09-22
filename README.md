@@ -1,4 +1,4 @@
 # devops-school
 educational purposes
 
-#changed from laptop
+#changed from laptop, git user creds configured
