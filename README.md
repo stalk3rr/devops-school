@@ -1,0 +1,2 @@
+# devops-school
+educational purposes
