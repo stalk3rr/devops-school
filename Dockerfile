@@ -9,7 +9,7 @@ RUN cp -Rv /tmp/apache-tomcat-8.5.58/* /usr/local/tomcat/
 #download, unpack and build boxfuse
 RUN mkdir /usr/local/boxfuse
 WORKDIR /usr/local/boxfuse
-RUN git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
+RUN git clone https://github.com/stalk3rr/boxfuse-sample-java-war-hello.git
 WORKDIR /usr/local/boxfuse/boxfuse-sample-java-war-hello
 RUN mvn package
 RUN cp -rf target/hello.war /usr/local/tomcat/webapps/
