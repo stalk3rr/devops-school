@@ -7,8 +7,9 @@ RUN wget https://apache-mirror.rbc.ru/pub/apache/tomcat/tomcat-8/v8.5.58/bin/apa
 RUN cd /tmp && tar xvfz tomcat.tar.gz
 RUN cp -Rv /tmp/apache-tomcat-8.5.58/* /usr/local/tomcat/
 #download and unpack my boxfuse example
-RUN mkdir /usr/local/boxfuse
 WORKDIR /usr/local/boxfuse
+#skip caching for next command
+ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
 RUN git clone https://github.com/stalk3rr/boxfuse-sample-java-war-hello.git
 WORKDIR /usr/local/boxfuse/boxfuse-sample-java-war-hello
 #build boxfuse artifact
