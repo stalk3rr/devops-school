@@ -11,7 +11,7 @@ WORKDIR /usr/local/boxfuse
 #skip caching for next command
 ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
 RUN git clone https://github.com/stalk3rr/boxfuse-sample-java-war-hello.git
-WORKDIR /usr/local/boxfuse/boxfuse-sample-java-war-hello
+WORKDIR boxfuse-sample-java-war-hello
 #build boxfuse artifact
 RUN mvn package
 RUN cp -rf target/hello.war /usr/local/tomcat/webapps/
