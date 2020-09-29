@@ -7,5 +7,5 @@ RUN pip install -qr requirements.txt
 RUN mkdir /opt/webapp
 WORKDIR /opt/webapp
 ADD app.py /opt/webapp
-EXPOSE 8080
+EXPOSE 5000
 CMD ["python", "app.py"]
