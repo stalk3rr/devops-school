@@ -13,9 +13,7 @@ ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
 RUN git clone https://github.com/stalk3rr/boxfuse-sample-java-war-hello.git
 WORKDIR boxfuse-sample-java-war-hello
 #build boxfuse artifact
-MOUNT source=hw7
 RUN mvn package
-
 RUN cp -rf target/hello.war /usr/local/tomcat/webapps/
 EXPOSE 8080
 CMD ["/usr/local/tomcat/bin/catalina.sh","run"]
