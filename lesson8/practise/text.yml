@@ -1,0 +1,40 @@
+---
+Dream:
+  - Departments:
+      - Department1:
+          - Accountants:
+          - Olya1
+          - Olya2
+          - Olya3
+          - Olya4
+      - Dima1
+      - Dima2
+      - Dima3
+      - Ivan1
+      - Ivan2
+      - Department2:
+          - Lawyers:
+          - Roman1
+          - Roman2
+          - Roman3
+          - Roman4
+          - Drivers:
+          - Maksim1
+          - Maksim2
+      - Department3:
+          - Lawyers:
+          - Olya
+          - Builders:
+          - Ivan
+          - Nikolay
+      - Department4-5:
+          - Paper-babes:
+          - Yulya1
+          - Yulya2
+          - Yulya3
+          - Yulya4
+          - Yulya5
+      - Department6:
+          - Security Chef:
+          - IgVic
+---
