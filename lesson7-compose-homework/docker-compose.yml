@@ -1,7 +1,21 @@
 version: '3'
 
-build:
-tomcat artifact
+services:
+  cicd:
+    build: .
+    container_name: build_env
+    volumes:
+      - cicd-volume:/usr/local/boxfuse/boxfuse-sample-java-war-hello/target
 
-prodcution:
-alpine tomcat
+  prod:
+    image: tomcat:7.0.106-jdk8-openjdk-slim-buster
+    container_name: prod_env
+    ports:
+      - "80:8080"
+    links:
+      - cicd
+    volumes:
+      - cicd-volume:/usr/local/tomcat/webapps/
+
+volumes:
+  cicd-volume:
