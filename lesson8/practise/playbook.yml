@@ -1,0 +1,35 @@
+---
+- name: "Install nginx"
+  hosts: web
+  become: yes
+
+  tasks:
+  - name: Ensure nginx package installed
+    apt:
+      name: nginx
+      state: present
+
+  - name: Ensure index.html persist
+    copy:
+      src: index.html
+      dest: /var/www/html
+
+  - name: Ensure that nginx service running
+    service:
+      name: nginx
+      state: started
+
+- name: Install PostgresQL
+  hosts: db
+  become: yes
+
+  tasks:
+    - name: Ensure that pSQL installed
+    apt:
+      name: postgresql
+      state: present
+
+    - name: Ensure pSQL service running
+      service:
+        name: postgresql
+        state: started
