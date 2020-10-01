@@ -1,7 +1,7 @@
 ---
 - name: "Install nginx"
   hosts: web
-  become: yes
+  become: "yes"
 
   tasks:
   - name: Ensure nginx package installed
@@ -21,7 +21,7 @@
 
 - name: Install PostgresQL
   hosts: db
-  become: yes
+  become: "yes"
 
   tasks:
     - name: Ensure that pSQL installed
