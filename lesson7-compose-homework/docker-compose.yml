@@ -8,7 +8,7 @@ services:
       - cicd-volume:/usr/local/boxfuse/boxfuse-sample-java-war-hello/target
 
   prod:
-    image: tomcat:7.0.106-jdk8-openjdk-slim-buster
+    image: tomcat:8.5-jre8-alpine
     container_name: prod_env
     ports:
       - "80:8080"
