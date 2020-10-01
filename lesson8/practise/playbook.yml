@@ -25,9 +25,9 @@
 
   tasks:
     - name: Ensure that pSQL installed
-    apt:
-      name: postgresql
-      state: present
+      apt:
+        name: postgresql
+        state: present
 
     - name: Ensure pSQL service running
       service:
