@@ -1,0 +1,24 @@
+---
+  - name: install nginx
+    hosts: web, db
+    become: yes
+    
+    vars:
+      source_folder: ./
+      destination_folder: /var/www/html
+    
+    tasks:
+    - name: Make sure taht nginx installed
+      apt:
+        name: nginx
+        state: present
+    
+    - name: Apply template
+      template:
+        src={{ source_folder }}/index.j2 dest={{ destination_folder }}/index.html mode=0555
+      notify:
+        - name: Restart nginx
+    
+    handlers:
+    - name: Restart nginx
+      service: name=nginx state=restarted
