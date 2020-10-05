@@ -52,7 +52,7 @@
       dest: /var/lib/tomcat8/webapps/
     delegate_to: 10.128.0.5
 
-  - name:
+  - name: Restart prod Tomcat
     service:
       name: tomcat8
       state: restarted
