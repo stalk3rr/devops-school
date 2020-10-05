@@ -12,8 +12,6 @@ services:
     container_name: prod_env
     ports:
       - "80:8080"
-    links:
-      - cicd
     volumes:
       - cicd-volume:/usr/local/tomcat/webapps/
 
