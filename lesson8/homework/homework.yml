@@ -1,6 +1,58 @@
-#2 hosts
-#1 - build
-#2 - prod
-#Написать playbook, который подготавливает сборочное и продовое
-#окружение на 2-х нодах. На сборочной ноде производится сборка
-#проекта, на продовой - запуск.
+---
+- name: Prepare build env
+  hosts: build
+  become: "yes"
+
+  tasks:
+  - name: install packages
+    apt: name={{ item }} state=present
+    with_items:
+      - maven
+      - git
+      - apt-utils
+
+  - name: Create directory for repo dowload
+    file:
+      path: /usr/download
+      state: directory
+
+  - name: Download sources
+    git:
+      repo: https://github.com/stalk3rr/boxfuse-sample-java-war-hello.git
+      dest: /usr/download/boxfuse-sample-java-war-hello
+
+  - name: Check that sources downloaded
+    file:
+      path: /usr/download/boxfuse-sample-java-war-hello
+      state: directory
+
+  - name: Build artifact
+    command:
+      chdir: /usr/download/boxfuse-sample-java-war-hello
+      cmd: mvn package
+
+- name: Prepare prod env
+  hosts: prod
+  become: "yes"
+
+  tasks:
+  - name: install packages
+    apt: name={{ item }} state=present force_apt_get=yes install_recommends=yes
+    with_items:
+      - openjdk-8-jdk
+      - tomcat8
+
+- name: Copy artifact from build to prod
+  hosts: prod
+
+  tasks:
+  - name: Copy Remote-To-Remote (from build to remote)
+    synchronize:
+      src: /usr/download/boxfuse-sample-java-war-hello/target/hello.war
+      dest: /var/lib/tomcat8/webapps/
+    delegate_to: 10.128.0.5
+
+  - name:
+    service:
+      name: tomcat8
+      state: restarted
